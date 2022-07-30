@@ -4,12 +4,16 @@ class ProductController {
 
    private $productServices;
    
-   public function __construct(ProductServices $productServices)
+   public function __construct(IServices $productServices)
    {
         $this->productServices = $productServices;
    }
 
    public function getAllRequest() {
-        $data = $productServices->getAll();
+        $data = $this->productServices->getAll();
+
+        if (isset($data)) {
+            
+        }
    }
 }
