@@ -2,11 +2,11 @@
 
 class Product
 {   
-    private $connection;
+    private PDO $connection;
     private $table = 'products';
 
     public $id;
-    public $name;
+    public $pname;
     public $category;
     public $price;
     public $created_at;

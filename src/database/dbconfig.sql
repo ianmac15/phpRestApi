@@ -1,5 +1,5 @@
 CREATE TABLE `products` (
-    `id` int(11) NOT NULL,
+    `id` varchar(255) NOT NULL,
     `name` varchar(255) NOT NULL,
     `category` varchar(255) NOT NULL,
     `price` float(24) NOT NULL,

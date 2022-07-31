@@ -5,7 +5,7 @@ class Database
     private $db_name = 'products';
     private $username = 'root';
     private $password = '123';
-    private $connection;
+    private PDO $connection;
 
 
     public function connect() {
