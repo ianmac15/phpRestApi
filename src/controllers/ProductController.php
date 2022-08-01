@@ -22,11 +22,11 @@ class ProductController
 
                while($numberOfProducts > 0) {
                     $product_item = array(
-                         'id'=>$id, 'pname' => $pname, 
+                         'id'=>$data->, 'pname' => $pname, 
                     );
                     $array_push($products_arr, $product_item);
                     $numberOfProducts = $numberOfProducts - 1;
-               }
+               };
           }
      }
 
