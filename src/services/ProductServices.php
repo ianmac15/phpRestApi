@@ -12,12 +12,12 @@ class ProductServices implements IServices
         $this->product = $product;
     }
 
-    public function getAll(): PDOStatement
+    public function getAll()
     {
        
         $query = 'SELECT * FROM' . $this->product->getTable() . 'ORDER BY created_at DESC';
         $statement = $this->product->getConnection()->query($query);
-        return $statement;
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
         // $statement = $this->product->getConnection()->prepare($query);
         // $statement->execute();
 

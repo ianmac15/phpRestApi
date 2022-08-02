@@ -1,5 +1,8 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+
 
 class ProductController
 {
@@ -17,16 +20,16 @@ class ProductController
           $numberOfProducts = $data->rowCount();
 
           if (isset($data)) {
+               return $data;
+               // $products_arr = array();
 
-               $products_arr = array();
-
-               while($numberOfProducts > 0) {
-                    $product_item = array(
-                         'id'=>$data->, 'pname' => $pname, 
-                    );
-                    $array_push($products_arr, $product_item);
-                    $numberOfProducts = $numberOfProducts - 1;
-               };
+               // while($numberOfProducts > 0) {
+               //      $product_item = array(
+               //           'id'=>$data->, 'pname' => $pname, 
+               //      );
+               //      $array_push($products_arr, $product_item);
+               //      $numberOfProducts = $numberOfProducts - 1;
+               // };
           }
      }
 
