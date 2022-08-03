@@ -1,8 +1,9 @@
 <?php
 
-include './IServices.php';
+// include './IServices.php';
+include_once '../models/Product.php';
 
-class ProductServices implements IServices
+class ProductServices
 {
 
     public $product;

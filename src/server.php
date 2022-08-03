@@ -13,7 +13,7 @@
     $db = new Database();
     $product = new Product($db->connect());
     $productServices = new ProductServices($product);
-    $productController = new ProductController($productServices);
+    // $productController = new ProductController($productServices);
 
    
 
