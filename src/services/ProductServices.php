@@ -1,9 +1,9 @@
 <?php
 
-// include './IServices.php';
+include_once '../Interfaces/IServices.php';
 include_once '../models/Product.php';
 
-class ProductServices
+class ProductServices implements IServices
 {
 
     public $product;
@@ -16,7 +16,7 @@ class ProductServices
     public function getAll()
     {
        
-        $query = 'SELECT * FROM' . $this->product->getTable() . 'ORDER BY created_at DESC';
+        $query = 'SELECT * FROM ' . $this->product->getTable() . ' ORDER BY created_at DESC';
         $statement = $this->product->getConnection()->query($query);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
         // $statement = $this->product->getConnection()->prepare($query);
@@ -27,39 +27,54 @@ class ProductServices
 
     public function getByID($id)
     {
-        $query = 'SELECT * FROM' . $this->product->getTable() . 'WHERE id = ' . $id . 'ORDER BY created_at DESC';
-        $statement = $this->product->getConnection()->query($query);
-        // $statement = $this->product->getConnection()->prepare($query);
-        // $statement->bindParam(1, $this->product->id);
-        // $statement->execute();
-
-        // $data = $statement->fetch(PDO::FETCH_ASSOC);
-
+        $query = 'SELECT * FROM ' . $this->product->getTable() . ' WHERE id=?';
+        $statement = $this->product->getConnection()->prepare($query);
+        $statement->bindParam(1, $id);
+        $statement->execute();
         return $statement->fetch(PDO::FETCH_ASSOC);
-        // $statement->bindParam(1, $this->product)
-        // $statement->execute();
-
-        // return $statement;
     }
 
     public function createProduct(Product $product)
     {   
-        $query = 'INSERT INTO' . $this->product->getTable() . '(id, pname, category, price) VALUES (UUID(),'  . $product->pname . ', ' . $product->category . ', ' . $product->price .')';
-        $statement = $this->product->getConnection()->query($query);
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        // $query = 'INSERT INTO ' . $this->product->getTable() . ' (id, pname, category, price) VALUES (UUID(), :pname, :category, :price)';
+        $query = 'INSERT INTO ' . $this->product->getTable() . ' SET id = UUID(), pname = :pname, category = :category, price = :price';
+        $statement = $this->product->getConnection()->prepare($query);
+        $statement->bindParam(':pname', $product->pname);
+        $statement->bindParam(':category', $product->category);
+        $statement->bindParam(':price', $product->price);
+        if ($statement->execute()) {
+            return true;
+        } 
+
+        return false;
+        
+       
     }
 
     public function updateProduct($id, Product $product)
     {   
-        $query = 'UPDATE' . $this->product->getTable() . 'WHERE id= ' . $id . ' SET pname =' . $this->product->pname . ', category=' . $this->product->category . ', price=' . $this->product->price . ', WHERE 1';
-        $statement = $this->product->getConnection()->query($query);
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        $query = 'UPDATE ' . $this->product->getTable() . ' SET pname = :pname, category= :category , price= :price WHERE id= :id';
+        $statement = $this->product->getConnection()->prepare($query);
+        $statement->bindParam(':id', $id);
+        $statement->bindParam(':pname', $product->pname);
+        $statement->bindParam(':category', $product->category);
+        $statement->bindParam(':price', $product->price);
+        if ($statement->execute()) {
+            return true;
+        } 
+
+        return false;
     }
 
     public function deleteProduct($id)
     {   
-        $query = 'DELETE FROM' . $this->product->getTable() . 'WHERE id=' .$id;
-        $statement = $this->product->getConnection()->query($query);
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        $query = 'DELETE FROM ' . $this->product->getTable() . ' WHERE id= :id';
+        $statement = $this->product->getConnection()->prepare($query);
+        $statement->bindParam(':id', $id);
+        if ($statement->execute()) {
+            return true;
+        } 
+
+        return false;
     }
 }
