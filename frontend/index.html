@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        const showHint = (str) => {
+            if (str.length == 0) {
+                document.getElementById("serverResponse").innerHTML = ""
+            } else {
+                const xmlhttp = new XMLHttpRequest()
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("serverResponse").innerHTML = this.responseText
+                    }
+                }
+                xmlhttp.open("GET", "xmlServer.php?q=" + str, true)
+                xmlhttp.send()
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>City Searcher</div>
+    <form>
+        <input id="formInput" type="text" placeholder="Enter city name:" name="movieName"
+            onkeyup="showHint(this.value)">
+    </form>
+    <h3>
+        Cities: <div id="serverResponse"></div>
+    </h3>
+</body>
+
+</html>
