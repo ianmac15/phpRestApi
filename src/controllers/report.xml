@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<products>
+  <product>
+    <id>96330bae-10d0-11ed-a159-1c7508446d23</id>
+    <name>Mazda Rx-7</name>
+    <category>Car</category>
+    <price>15000</price>
+    <created_at>2022-07-31 15:43:18</created_at>
+  </product>
+  <product>
+    <id>9bedc06a-10d0-11ed-a159-1c7508446d23</id>
+    <name>Xiami</name>
+    <category>Phone</category>
+    <price>199.99</price>
+    <created_at>2022-07-31 14:05:21</created_at>
+  </product>
+  <product>
+    <id>82322179-10d0-11ed-a159-1c7508446d23</id>
+    <name>Fender stratocaster</name>
+    <category>Guitar</category>
+    <price>699.99</price>
+    <created_at>2022-07-30 19:01:59</created_at>
+  </product>
+  <product>
+    <id>8828daa7-10d0-11ed-a159-1c7508446d23</id>
+    <name>Toyota Yaris</name>
+    <category>Car</category>
+    <price>5999.99</price>
+    <created_at>2022-07-30 19:01:59</created_at>
+  </product>
+  <product>
+    <id>8f35d07b-10d0-11ed-a159-1c7508446d23</id>
+    <name>Opel Corsa</name>
+    <category>Car</category>
+    <price>4999.99</price>
+    <created_at>2022-07-30 19:01:59</created_at>
+  </product>
+  <product>
+    <id>a2a2ad42-10d0-11ed-a159-1c7508446d23</id>
+    <name>Lenovo G505</name>
+    <category>Laptop</category>
+    <price>499.99</price>
+    <created_at>2022-07-30 19:01:59</created_at>
+  </product>
+</products>
